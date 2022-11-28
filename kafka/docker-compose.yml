@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  eagle:
+      image: dushixiang/kafka-map:latest
+      environment:
+        - DEFAULT_USERNAME=admin
+        - DEFAULT_PASSWORD=admin
+      ports:
+        - 8080:8080
+      volumes:
+        - ./data:/usr/local/kafka-map/data
