@@ -1,0 +1,6 @@
+network.host: 0.0.0.0
+http.port: 9200
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+bootstrap.memory_lock: true
+xpack.security.enabled: false
