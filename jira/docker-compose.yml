@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  web-network:
+
+services:
+
+  jira-core:
+    image: cptactionhank/atlassian-jira-software:7.13.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/jira:/var/atlassian/jira
+    networks:
+      - web-network
+
+  docker-mysql:
+    image: mysql:8.0
+    hostname: mysql
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
+    ports:
+      - 3306:3306
+    networks:
+      - web-network

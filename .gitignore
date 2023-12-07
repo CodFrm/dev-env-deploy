@@ -1,1 +1,6 @@
 data/
+
+.vscode
+.idea
+
+id_rsa

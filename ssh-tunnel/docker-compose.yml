@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  ssh_tunnel:
+    build: .
+    restart: always
+    environment:
+      - LOCAL_PORT=27020
+      - REMOTE_PORT=27017
+      - USERNAME=ubuntu
+      - REMOTE_IP=192.168.1.100
+      - REMOTE_HOST=192.168.1.101
+    ports:
+      - 27020:27020
+    volumes:
+      - ./id_rsa:/root/.ssh/id_rsa
