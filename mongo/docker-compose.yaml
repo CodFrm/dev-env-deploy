@@ -1,0 +1,18 @@
+version: '3'
+
+# openssl rand -base64 128 > ./mongodb/keyFile
+
+services:
+  mongo:
+    restart: unless-stopped
+    image: mongo:4.4.9
+    command: mongod --auth --replSet rs0 --keyFile /data/mongodb/keyFile
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+      - ./config:/data/configdb
+      - ./keyFile:/data/mongodb/keyFile
